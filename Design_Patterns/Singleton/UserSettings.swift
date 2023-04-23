@@ -18,6 +18,10 @@ final public class UserSettings {
   
   public static let shared = UserSettings()
   
+  // MARK: Get string
+  public func string(forKey key: String) -> String? {
+    return settings[key] as? String
+  }
   
   
 }
