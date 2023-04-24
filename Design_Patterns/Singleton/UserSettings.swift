@@ -23,5 +23,9 @@ final public class UserSettings {
     return settings[key] as? String
   }
   
+  // MARK: Get integer
+  public func int(forKey key: String) -> Int? {
+    return settings[key] as? Int
+  }
   
 }
