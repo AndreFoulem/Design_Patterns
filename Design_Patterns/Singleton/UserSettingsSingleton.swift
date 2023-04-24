@@ -18,19 +18,28 @@ final public class UserSettings {
   
   public static let shared = UserSettings()
   
+  private let serialQueue = DispatchQueue(label: "serialQueue")
+  
   // MARK: Get string
   public func string(forKey key: String) -> String? {
-    return settings[key] as? String
+    serialQueue.sync {
+      return settings[key] as? String
+    }
   }
-  
+    
   // MARK: Get integer
   public func int(forKey key: String) -> Int? {
-    return settings[key] as? Int
+    serialQueue.sync {
+      return settings[key] as? Int
+    }
   }
   
+
   // MARK: Set
-  public func set(value: Any, forKey key: String) {
-    settings[key] = value
+  public func set(_ value: Any, forKey key: String) {
+    serialQueue.sync {
+      settings[key] = value
+    }
   }
   
 }
