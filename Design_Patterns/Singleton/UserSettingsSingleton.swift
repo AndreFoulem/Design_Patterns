@@ -28,6 +28,9 @@ final public class UserSettings {
     return settings[key] as? Int
   }
   
-  
+  // MARK: Set
+  public func set(value: Any, forKey key: String) {
+    settings[key] = value
+  }
   
 }
